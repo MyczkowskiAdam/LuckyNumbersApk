@@ -15,9 +15,9 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("luckynumbers");
     }
 
-    EditText mFirstName;
-    EditText mLastName;
-    Button mButton;
+    private EditText mFirstName;
+    private EditText mLastName;
+    private Button mButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -6,7 +6,7 @@
 #include <sstream>
 
 /* VARIABLES USED */
-std::string lucky[] = {
+const std::string lucky[] = {
         "are a natural leader",
         "are a natural peacemaker",
         "are creative and optimistic",
@@ -19,8 +19,8 @@ std::string lucky[] = {
 };
 
 
-std::string alphabet = "abcdefghijklmnopqrstuvwxyz"; //Letters of alphabet used throughout the program
-std::string CAPalphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //Capital letters of alphabet used throughout the program
+const std::string alphabet = "abcdefghijklmnopqrstuvwxyz"; //Letters of alphabet used throughout the program
+const std::string CAPalphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //Capital letters of alphabet used throughout the program
 
 int FrNmVal, LstNmVal, tmp, LuckyNumber;
 
@@ -41,9 +41,9 @@ int LuckyNumbersProcess(std::string FrNm, std::string LstNm) {
     FrNmAr = const_cast<char*>(FrNm.c_str()); // converts a string into char* (pointer to a char, basically a char array)
 
     for (unsigned int i = 0; i<FrNm.length(); i++) {
-        tmp = alphabet.find(FrNmAr[i]); // This function takes a char from char*, tries to find it in the alphabet string, returns its positiion as a integer and writes results to tmp integer
+        tmp = int(alphabet.find(FrNmAr[i])); // This function takes a char from char*, tries to find it in the alphabet string, returns its positiion as a integer and writes results to tmp integer
         if (tmp == std::string::npos) { // npos (-1) is returned when char we looking for is not in a given string (no position)
-            tmp = CAPalphabet.find(FrNmAr[i]); // This function takes a char from char*, tries to find it in the CAPalphabet string, returns its positiion as a integer and writes results to tmp integer
+            tmp = int(CAPalphabet.find(FrNmAr[i])); // This function takes a char from char*, tries to find it in the CAPalphabet string, returns its positiion as a integer and writes results to tmp integer
             if (tmp == std::string::npos) { // npos (-1) is returned when char we looking for is not in a given string (no position)
                 break;
             }
@@ -54,9 +54,9 @@ int LuckyNumbersProcess(std::string FrNm, std::string LstNm) {
     LstNmAr = const_cast<char*>(LstNm.c_str()); // converts a string into char* (pointer to a char, basically a char array)
 
     for (unsigned int i = 0; i<LstNm.length(); i++) {
-        tmp = alphabet.find(LstNmAr[i]); // This function takes a char from char*, tries to find it in the alphabet string, returns its positiion as a integer and writes results to tmp integer
+        tmp = int(alphabet.find(LstNmAr[i])); // This function takes a char from char*, tries to find it in the alphabet string, returns its positiion as a integer and writes results to tmp integer
         if (tmp == std::string::npos) { // npos (-1) is returned when char we looking for is not in a given string (no position)
-            tmp = CAPalphabet.find(LstNmAr[i]); // This function takes a char from char*, tries to find it in the CAPalphabet string, returns its positiion as a integer and writes results to tmp integer
+            tmp = int(CAPalphabet.find(LstNmAr[i])); // This function takes a char from char*, tries to find it in the CAPalphabet string, returns its positiion as a integer and writes results to tmp integer
             if (tmp == std::string::npos) { // npos (-1) is returned when char we looking for is not in a given string (no position)
                 break;
             }
