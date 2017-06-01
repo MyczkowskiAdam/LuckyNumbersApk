@@ -19,6 +19,10 @@ public class MainActivity extends AppCompatActivity {
     private EditText mLastName;
     private Button mButton;
 
+    private boolean isEmpty(EditText etText) {
+        return etText.getText().toString().trim().length() == 0;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,16 +31,24 @@ public class MainActivity extends AppCompatActivity {
         mFirstName = (EditText)findViewById(R.id.firstName);
         mLastName = (EditText)findViewById(R.id.lastName);
         mButton = (Button)findViewById(R.id.button);
+
         mButton.setOnClickListener(
                 new View.OnClickListener()
                 {
                     public void onClick(View view)
                     {
                         TextView tv = (TextView) findViewById(R.id.output_text);
-                        tv.setText(Calculate(mFirstName.getText().toString(),mLastName.getText().toString()));
+                        if (isEmpty(mFirstName) && isEmpty(mLastName) || isEmpty(mFirstName) || isEmpty(mLastName)) {
+                            tv.setText("Input fields cannot be empty. Please enter the text");
+                        }
+                        else {
+                            tv.setText(Calculate(mFirstName.getText().toString(), mLastName.getText().toString()));
+                        }
                     }
                 });
     }
+
+
 
     public native String Calculate(String jFirstName, String jLastName);
 

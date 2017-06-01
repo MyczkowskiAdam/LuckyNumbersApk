@@ -22,10 +22,10 @@ const std::string lucky[] = {
 const std::string alphabet = "abcdefghijklmnopqrstuvwxyz"; //Letters of alphabet used throughout the program
 const std::string CAPalphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //Capital letters of alphabet used throughout the program
 
-int FrNmVal, LstNmVal, tmp, LuckyNumber;
+int FrNmVal, LstNmVal, tmp, LuckyNumber, dig1, dig2, dig3;
 
-std::string FrNmValS, LstNmValS, LuckyNumberS, FrNmFromJava, LstNmFromJava, NumberAndMeaning;
-char *FrNmValAr, *LstNmValAr, *LuckyNumberAr, *FrNmAr, *LstNmAr;
+std::string FrNmFromJava, LstNmFromJava, NumberAndMeaning;
+char *FrNmAr, *LstNmAr;
 
 /* END VARIABLES LIST*/
 
@@ -65,37 +65,40 @@ int LuckyNumbersProcess(std::string FrNm, std::string LstNm) {
     }
 
     while (FrNmVal > 9) { // if number is lower than 9 it's a single digit and doesn't need to be split
-        FrNmValS = ToString(FrNmVal);
-        FrNmValAr = const_cast<char*>(FrNmValS.c_str());
+        dig1 = (FrNmVal / 10) % 10;
+        dig2 = FrNmVal % 10;
         if (FrNmVal > 99) {
-            FrNmVal = (FrNmValAr[0] - '0') + (FrNmValAr[1] - '0') + (FrNmValAr[2] + '0');
+            dig3 = (FrNmVal / 100) % 10;
+            FrNmVal = dig1 + dig2 + dig3;
         }
         else {
-            FrNmVal = (FrNmValAr[0] - '0') + (FrNmValAr[1] - '0');
+            FrNmVal = dig1 + dig2;
         }
     }
 
     while (LstNmVal > 9) { // if number is lower than 9 it's a single digit and doesn't need to be split
-        LstNmValS = ToString(LstNmVal);
-        LstNmValAr = const_cast<char*>(LstNmValS.c_str());
+        dig1 = (LstNmVal / 10) % 10;
+        dig2 = LstNmVal % 10;
         if (LstNmVal > 99) {
-            FrNmVal = (LstNmValAr[0] - '0') + (LstNmValAr[1] - '0') + (LstNmValAr[2] + '0');
+            dig3 = (LstNmVal / 100) % 10;
+            LstNmVal = dig1 + dig2 + dig3;
         }
         else {
-            LstNmVal = (LstNmValAr[0] - '0') + (LstNmValAr[1] - '0');
+            LstNmVal = dig1 + dig2;
         }
     }
 
     LuckyNumber = FrNmVal + LstNmVal;
 
     while (LuckyNumber > 9) { // if number is lower than 9 it's a single digit and doesn't need to be split
-        LuckyNumberS = ToString(LuckyNumber);
-        LuckyNumberAr = const_cast<char*>(LuckyNumberS.c_str());
+        dig1 = (LuckyNumber / 10) % 10;
+        dig2 = LuckyNumber % 10;
         if (LuckyNumber > 99) {
-            LuckyNumber = (LuckyNumberAr[0] - '0') + (LuckyNumberAr[1] - '0') + (LuckyNumberAr[2] + '0');
+            dig3 = (LuckyNumber / 100) % 10;
+            LuckyNumber = dig1 + dig2 + dig3;
         }
         else {
-            LuckyNumber = (LuckyNumberAr[0] - '0') + (LuckyNumberAr[1] - '0');
+            LuckyNumber = dig1 + dig2;
         }
     }
 
@@ -105,9 +108,6 @@ int LuckyNumbersProcess(std::string FrNm, std::string LstNm) {
 
 void ClearAll() {
     FrNmVal = LstNmVal = tmp = LuckyNumber = 0;
-    FrNmValS.clear();
-    LstNmValS.clear();
-    LuckyNumberS.clear();
     FrNmFromJava.clear();
     LstNmFromJava.clear();
     NumberAndMeaning.clear();
