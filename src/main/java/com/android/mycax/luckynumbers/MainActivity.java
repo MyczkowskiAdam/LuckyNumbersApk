@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText mFirstName;
     private EditText mLastName;
     private Button mButton;
+    
 
     private boolean isEmpty(EditText etText) {
         return etText.getText().toString().trim().length() == 0;
@@ -37,11 +39,12 @@ public class MainActivity extends AppCompatActivity {
                 {
                     public void onClick(View view)
                     {
-                        TextView tv = (TextView) findViewById(R.id.output_text);
                         if (isEmpty(mFirstName) && isEmpty(mLastName) || isEmpty(mFirstName) || isEmpty(mLastName)) {
-                            tv.setText("Input fields cannot be empty. Please enter the text");
+                            Toast.makeText(MainActivity.this, "Input fields cannot be empty", Toast.LENGTH_SHORT).show();
+
                         }
                         else {
+                            TextView tv = (TextView) findViewById(R.id.output_text);
                             tv.setText(Calculate(mFirstName.getText().toString(), mLastName.getText().toString()));
                         }
                     }
