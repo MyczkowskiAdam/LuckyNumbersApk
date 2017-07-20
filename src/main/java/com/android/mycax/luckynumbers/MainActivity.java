@@ -25,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
         return etText.getText().toString().trim().length() == 0;
     }
 
+    private boolean isAlpha(String name) {
+        return name.matches("[a-zA-Z]+");
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,21 +41,20 @@ public class MainActivity extends AppCompatActivity {
         mButton.setOnClickListener(
                 new View.OnClickListener()
                 {
-                    public void onClick(View view)
-                    {
+                    public void onClick(View view) {
                         if (isEmpty(mFirstName) && isEmpty(mLastName) || isEmpty(mFirstName) || isEmpty(mLastName)) {
                             Toast.makeText(MainActivity.this, "Input fields cannot be empty", Toast.LENGTH_SHORT).show();
 
-                        }
-                        else {
+                        } else if (isAlpha(mFirstName.getText().toString()) && isAlpha(mLastName.getText().toString())) {
                             TextView tv = (TextView) findViewById(R.id.output_text);
                             tv.setText(Calculate(mFirstName.getText().toString(), mLastName.getText().toString()));
+                        }
+                        else {
+                            Toast.makeText(MainActivity.this, "Input fields can only contain letters!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
-
-
 
     public native String Calculate(String jFirstName, String jLastName);
 
