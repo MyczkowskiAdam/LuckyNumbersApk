@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text=""
         android:layout_marginTop="35dp"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/button_calculate"
         android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="16dp"
@@ -57,7 +57,7 @@
         android:layout_marginEnd="16dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_calculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_calculate"
@@ -71,19 +71,31 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp" />
 
+    <Button
+        android:id="@+id/button_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_reset"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/output_text"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
     <TextView
         android:id="@+id/Greetings"
-        android:layout_width="288dp"
-        android:layout_height="73dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:text="@string/app_greetings"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp" />
 
     <TextView
         android:id="@+id/enter_first_name"
