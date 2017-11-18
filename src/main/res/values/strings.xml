@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">Lucky Numbers</string>
-    <string name="btn_calculate">Calculate</string>
-    <string name="app_greetings">Welcome to Lucky Numbers! This simple application will calculate your lucky number</string>
-    <string name="enter_fname">Enter your first name below:</string>
-    <string name="enter_lname">Enter your last name below:</string>
-    <string name="btn_reset">Reset</string>
-</resources>
