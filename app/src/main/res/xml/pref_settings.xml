@@ -1,0 +1,22 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="app_dark_theme"
+        android:title="@string/enable_dark_theme" />
+
+    <Preference android:key="build_app_version"
+        android:title="@string/build_version"
+        android:summary="@string/build_version_string" />
+
+    <Preference android:key="app_creator"
+        android:title="@string/app_creator"
+        android:summary="@string/app_creator_name" />
+
+    <Preference android:key="app_github_link"
+        android:title="@string/app_github"
+        android:summary="@string/app_github_summary"/>
+
+
+
+</PreferenceScreen>

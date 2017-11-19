@@ -1,8 +1,27 @@
 <resources>
     <string name="app_name">Lucky Numbers</string>
+
+    <!-- LuckyNumbers -->
     <string name="btn_calculate">Calculate</string>
     <string name="app_greetings">Welcome to Lucky Numbers! This simple application will calculate your lucky number</string>
     <string name="enter_fname">Enter your first name below:</string>
     <string name="enter_lname">Enter your last name below:</string>
     <string name="btn_reset">Reset</string>
+
+    <!-- Bottom navbar titles -->
+    <string name="title_luckynumbers">Lucky Numbers</string>
+    <string name="title_results">Results</string>
+    <string name="title_settings">Settings</string>
+
+    <!-- Settings -->
+    <string name="enable_dark_theme">Enable Dark Theme</string>
+
+    <string name="build_version">App Version</string>
+    <string name="build_version_string">1.5</string>
+
+    <string name="app_creator">Creator</string>
+    <string name="app_creator_name">Adam Myczkowski (mycax)</string>
+
+    <string name="app_github">GitHub</string>
+    <string name="app_github_summary">Click here to view the source and contribute!</string>
 </resources>
