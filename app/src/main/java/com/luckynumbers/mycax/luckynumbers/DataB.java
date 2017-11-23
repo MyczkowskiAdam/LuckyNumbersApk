@@ -68,4 +68,10 @@ public class DataB extends SQLiteOpenHelper {
         database.close();
 
     }
+
+    public void clearDatabase() {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        String clearDBQuery = "DELETE FROM "+RESULTS_TABLE_NAME;
+        sqLiteDatabase.execSQL(clearDBQuery);
+    }
 }

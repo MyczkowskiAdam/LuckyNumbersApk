@@ -9,6 +9,10 @@
         android:title="@string/build_version"
         android:summary="@string/build_version_string" />
 
+    <Preference android:key="app_delete_results"
+        android:title="@string/delete_results"
+        android:summary="@string/delete_results_summary"/>
+
     <Preference android:key="app_creator"
         android:title="@string/app_creator"
         android:summary="@string/app_creator_name" />
@@ -16,7 +20,5 @@
     <Preference android:key="app_github_link"
         android:title="@string/app_github"
         android:summary="@string/app_github_summary"/>
-
-
 
 </PreferenceScreen>

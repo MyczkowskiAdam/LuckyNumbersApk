@@ -24,4 +24,7 @@
 
     <string name="app_github">GitHub</string>
     <string name="app_github_summary">Click here to view the source and contribute!</string>
+
+    <string name="delete_results">Clear results database</string>
+    <string name="delete_results_summary">Delete all contents from results database</string>
 </resources>
