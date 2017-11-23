@@ -62,7 +62,6 @@ public class DataB extends SQLiteOpenHelper {
         }
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(context, R.layout.row, cursor, from, to, 0);
-        adapter.notifyDataSetChanged();
 
         listView.setAdapter(adapter);
         database.close();
@@ -73,5 +72,10 @@ public class DataB extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         String clearDBQuery = "DELETE FROM "+RESULTS_TABLE_NAME;
         sqLiteDatabase.execSQL(clearDBQuery);
+    }
+
+    public void deleteEntry(long row) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        sqLiteDatabase.delete(RESULTS_TABLE_NAME, RESULTS_COLUMN_ID + "=" + row, null);
     }
 }
