@@ -5,10 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.ListView;
+import android.util.Log;
 import android.widget.SimpleCursorAdapter;
 
-public class DataB extends SQLiteOpenHelper {
+import java.util.ArrayList;
+import java.util.List;
+
+public class DataBHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "results_database";
     public static final String RESULTS_TABLE_NAME = "results_table";
@@ -16,7 +19,7 @@ public class DataB extends SQLiteOpenHelper {
     public static final String RESULTS_COLUMN_NAME = "name";
     public static final String RESULTS_COLUMN_RESULT = "result";
 
-    public DataB(Context context) {
+    public DataBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -38,34 +41,28 @@ public class DataB extends SQLiteOpenHelper {
         SQLiteDatabase database = getWritableDatabase();
         ContentValues values = new ContentValues();
         String name = fname + " " + lname;
-        values.put(DataB.RESULTS_COLUMN_NAME, name);
-        values.put(DataB.RESULTS_COLUMN_RESULT, result);
-        database.insert(DataB.RESULTS_TABLE_NAME, null, values);
+        values.put(DataBHelper.RESULTS_COLUMN_NAME, name);
+        values.put(DataBHelper.RESULTS_COLUMN_RESULT, result);
+        database.insert(DataBHelper.RESULTS_TABLE_NAME, null, values);
         database.close();
     }
 
-    public void ReadDB(Context context, ListView listView) {
-        SQLiteDatabase database = getReadableDatabase();
-
-        String[] from = new String[]{DataB.RESULTS_COLUMN_NAME, DataB.RESULTS_COLUMN_RESULT};
-        int[] to = new int[]{R.id.list_name, R.id.list_result};
-
-        String[] projection = {
-                DataB.RESULTS_COLUMN_ID,
-                DataB.RESULTS_COLUMN_NAME,
-                DataB.RESULTS_COLUMN_RESULT
-        };
-
-        Cursor cursor = database.query(DataB.RESULTS_TABLE_NAME, projection, null, null, null, null, null);
-        if (cursor != null) {
-            cursor.moveToFirst();
+    public List<DataModel> readDB(){
+        List<DataModel> data=new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from "+RESULTS_TABLE_NAME+" ;",null);
+        StringBuffer stringBuffer = new StringBuffer();
+        DataModel dataModel = null;
+        while (cursor.moveToNext()) {
+            dataModel= new DataModel();
+            String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+            String result = cursor.getString(cursor.getColumnIndexOrThrow("result"));
+            dataModel.setName(name);
+            dataModel.setResult(result);
+            stringBuffer.append(dataModel);
+            data.add(dataModel);
         }
-
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(context, R.layout.row, cursor, from, to, 0);
-
-        listView.setAdapter(adapter);
-        database.close();
-
+        return data;
     }
 
     public void clearDatabase() {

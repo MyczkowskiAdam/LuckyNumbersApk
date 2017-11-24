@@ -45,7 +45,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
                     {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            DataB database = new DataB(getActivity());
+                            DataBHelper database = new DataBHelper(getActivity());
                             database.clearDatabase();
                         }
 

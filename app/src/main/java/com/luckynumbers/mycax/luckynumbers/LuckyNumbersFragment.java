@@ -24,7 +24,7 @@ public class LuckyNumbersFragment extends Fragment implements
     private TextView mOutputText;
     private Button mButton_Calculate;
     private Button mButton_Reset;
-    private DataB database;
+    private DataBHelper database;
 
     private boolean isEmpty(EditText etText) {
         return etText.getText().toString().trim().length() == 0;
@@ -59,8 +59,9 @@ public class LuckyNumbersFragment extends Fragment implements
 
             } else if (isAlpha(mFirstName.getText().toString()) && isAlpha(mLastName.getText().toString())) {
                 mOutputText.setText(Calculate(mFirstName.getText().toString(), mLastName.getText().toString()));
-                database = new DataB(getActivity());
+                database = new DataBHelper(getActivity());
                 database.saveToDB(mFirstName.getText().toString(), mLastName.getText().toString(), mOutputText.getText().toString());
+                database.close();
 
             } else {
                 Toast.makeText(getActivity(), "Input fields can only contain letters!", Toast.LENGTH_SHORT).show();
