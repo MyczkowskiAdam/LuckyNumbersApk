@@ -1,6 +1,8 @@
 package com.luckynumbers.mycax.luckynumbers;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,38 +23,39 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
 
     class Myholder extends RecyclerView.ViewHolder implements CardView.OnLongClickListener {
         TextView name, result;
+        String id;
+
 
         public Myholder(View itemView) {
             super(itemView);
 
             name = (TextView) itemView.findViewById(R.id.card_name);
             result = (TextView) itemView.findViewById(R.id.card_result);
+
             CardView cardView = (CardView) itemView.findViewById(R.id.card_view);
             cardView.setOnLongClickListener(this);
         }
 
         @Override
         public boolean onLongClick(View v) {
-            /*new AlertDialog.Builder(context)
+            new AlertDialog.Builder(context)
                     .setIcon(R.drawable.ic_warning_black_24dp)
                     .setTitle("Delete result")
                     .setMessage("Are you sure you want delete this result?")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            //DataBHelper database = new DataBHelper(context);
-                            //ResultsFragment resultsFragment = new ResultsFragment();
-                            //database.deleteEntry(getAdapterPosition());
-                            //notifyItemRemoved(getAdapterPosition());
-                            //notifyDataSetChanged();
-                            //Log.e("DATABASE/E", "Could not remove item from the list");
-                            //resultsFragment.datamodel.remove(getAdapterPosition());
-                            //database.close();
+                            DataBHelper database = new DataBHelper(context);
+                            database.deleteEntry(Long.parseLong(id));
+                            dataModelArrayList.remove(getAdapterPosition());
+                            notifyItemRemoved(getAdapterPosition());
+                            notifyDataSetChanged();
+                            database.close();
                         }
 
                     })
                     .setNegativeButton("No", null)
-                    .show();*/
+                    .show();
             return true;
         }
     }
@@ -69,12 +72,14 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
         DataModel dataModel = dataModelArrayList.get(position);
         holder.name.setText(dataModel.getName());
         holder.result.setText(dataModel.getResult());
+        holder.id = dataModel.getId();
     }
 
     @Override
     public int getItemCount() {
         return dataModelArrayList.size();
     }
+
 }
 
 

@@ -13,7 +13,6 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.pref_settings);
 
@@ -47,6 +46,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
                         public void onClick(DialogInterface dialog, int which) {
                             DataBHelper database = new DataBHelper(getActivity());
                             database.clearDatabase();
+                            database.close();
                         }
 
                     })
@@ -55,5 +55,4 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
         }
         return true;
     }
-
 }

@@ -5,6 +5,7 @@ public class DataModel {
 
     public String name;
     public String result;
+    public String id;
 
     public String getName() {
         return name;
@@ -20,5 +21,13 @@ public class DataModel {
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

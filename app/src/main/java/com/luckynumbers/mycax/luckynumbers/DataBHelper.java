@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.SimpleCursorAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,11 +56,14 @@ public class DataBHelper extends SQLiteOpenHelper {
             dataModel= new DataModel();
             String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
             String result = cursor.getString(cursor.getColumnIndexOrThrow("result"));
+            String id = cursor.getString(cursor.getColumnIndexOrThrow("_id"));
             dataModel.setName(name);
             dataModel.setResult(result);
+            dataModel.setId(id);
             stringBuffer.append(dataModel);
             data.add(dataModel);
         }
+        db.close();
         return data;
     }
 
@@ -69,10 +71,12 @@ public class DataBHelper extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         String clearDBQuery = "DELETE FROM "+RESULTS_TABLE_NAME;
         sqLiteDatabase.execSQL(clearDBQuery);
+        sqLiteDatabase.close();
     }
 
     public void deleteEntry(long row) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         sqLiteDatabase.delete(RESULTS_TABLE_NAME, RESULTS_COLUMN_ID + "=" + row, null);
+        sqLiteDatabase.close();
     }
 }
