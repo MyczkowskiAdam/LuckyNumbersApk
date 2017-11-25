@@ -3,8 +3,8 @@ package com.luckynumbers.mycax.luckynumbers;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.LayoutInflater;
@@ -22,8 +22,8 @@ public class LuckyNumbersFragment extends Fragment implements
     private EditText mFirstName;
     private EditText mLastName;
     private TextView mOutputText;
-    private Button mButton_Calculate;
-    private Button mButton_Reset;
+    private ImageButton mButton_Calculate;
+    private ImageButton mButton_Reset;
     private DataBHelper database;
 
     private boolean isEmpty(EditText etText) {
@@ -43,9 +43,9 @@ public class LuckyNumbersFragment extends Fragment implements
         mLastName = (EditText) view.findViewById(R.id.lastName);
         mOutputText = (TextView) view.findViewById(R.id.output_text);
 
-        mButton_Calculate = (Button) view.findViewById(R.id.button_calculate);
+        mButton_Calculate = (ImageButton) view.findViewById(R.id.imageButtonCalculate);
         mButton_Calculate.setOnClickListener(this);
-        mButton_Reset = (Button) view.findViewById(R.id.button_reset);
+        mButton_Reset = (ImageButton) view.findViewById(R.id.imageButtonReset);
         mButton_Reset.setOnClickListener(this);
         return view;
     }
@@ -53,7 +53,7 @@ public class LuckyNumbersFragment extends Fragment implements
     @Override
     public void onClick(View v) {
 
-        if (v.getId() == R.id.button_calculate) {
+        if (v.getId() == R.id.imageButtonCalculate) {
             if (isEmpty(mFirstName) && isEmpty(mLastName) || isEmpty(mFirstName) || isEmpty(mLastName)) {
                 Toast.makeText(getActivity(), "Input fields cannot be empty", Toast.LENGTH_SHORT).show();
 
@@ -66,7 +66,7 @@ public class LuckyNumbersFragment extends Fragment implements
             } else {
                 Toast.makeText(getActivity(), "Input fields can only contain letters!", Toast.LENGTH_SHORT).show();
             }
-        } else if (v.getId() == R.id.button_reset) {
+        } else if (v.getId() == R.id.imageButtonReset) {
             mFirstName.getText().clear();
             mLastName.getText().clear();
             mOutputText.setText("");
