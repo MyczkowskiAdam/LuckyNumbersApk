@@ -1,22 +1,23 @@
 package com.luckynumbers.mycax.luckynumbers;
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
-import android.view.View;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
 
-    public BottomNavigationView navigation;
+public class MainActivity extends AppCompatActivity implements OnTabSelectListener {
+
+    public BottomBar navigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(this);
+        navigation = (BottomBar) findViewById(R.id.navigation);
+        navigation.setOnTabSelectListener(this);
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction().replace(
                     R.id.fragmentContainer, new LuckyNumbersFragment())
@@ -25,33 +26,24 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.navigation_luckynumbers:
-                getFragmentManager().beginTransaction().replace(
-                        R.id.fragmentContainer, new LuckyNumbersFragment())
-                        .commit();
-                return true;
-            case R.id.navigation_results:
-                getFragmentManager().beginTransaction().replace(
-                        R.id.fragmentContainer, new ResultsFragment())
-                        .commit();
-                return true;
-            case R.id.navigation_settings:
-                getFragmentManager().beginTransaction().replace(
-                        R.id.fragmentContainer, new SettingsFragment())
-                        .commit();
-                return true;
+    public void onTabSelected(@IdRes int tabId) {
+        if (tabId == R.id.navigation_luckynumbers) {
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out)
+                    .replace(R.id.fragmentContainer, new LuckyNumbersFragment())
+                    .commit();
         }
-        return false;
-    }
-
-    public void setNavigationVisibility(boolean visible) {
-        if (navigation.isShown() && !visible) {
-            navigation.setVisibility(View.GONE);
+        if (tabId == R.id.navigation_results) {
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out)
+                    .replace(R.id.fragmentContainer, new ResultsFragment())
+                    .commit();
         }
-        else if (!navigation.isShown() && visible){
-            navigation.setVisibility(View.VISIBLE);
+        if (tabId == R.id.navigation_settings) {
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out)
+                    .replace(R.id.fragmentContainer, new SettingsFragment())
+                    .commit();
         }
     }
 }
