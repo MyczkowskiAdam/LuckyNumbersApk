@@ -15,6 +15,7 @@ import java.util.List;
 public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myholder> {
     List<DataModel> dataModelArrayList;
     Context context;
+    ResultsCallBack resultsCallBack;
 
     public DatabaseAdapter(List<DataModel> dataModelArrayList, Context context) {
         this.dataModelArrayList = dataModelArrayList;
@@ -50,6 +51,7 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
                             dataModelArrayList.remove(getAdapterPosition());
                             notifyItemRemoved(getAdapterPosition());
                             notifyDataSetChanged();
+                            resultsCallBack.getEmpty();
                             database.close();
                         }
 
@@ -80,6 +82,13 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
         return dataModelArrayList.size();
     }
 
+    public interface ResultsCallBack {
+        void getEmpty();
+    }
+
+    public void setEmptyDrawableListener(ResultsCallBack callBack) {
+        this.resultsCallBack = callBack;
+    }
 }
 
 

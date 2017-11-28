@@ -13,12 +13,13 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResultsFragment extends Fragment {
+public class ResultsFragment extends Fragment implements DatabaseAdapter.ResultsCallBack{
 
     DataBHelper database;
     RecyclerView recyclerView;
     DatabaseAdapter recycler;
     public List<DataModel> datamodel;
+    ImageView imageView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -34,7 +35,15 @@ public class ResultsFragment extends Fragment {
         recyclerView.setLayoutManager(reLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(recycler);
-        ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
+        imageView = (ImageView) view.findViewById(R.id.imageView);
+        recycler.setEmptyDrawableListener(this);
+        getEmpty();
+        database.close();
+        return view;
+    }
+
+    @Override
+    public void getEmpty() {
         if (datamodel.isEmpty()) {
             recyclerView.setVisibility(View.GONE);
             imageView.setVisibility(View.VISIBLE);
@@ -43,7 +52,5 @@ public class ResultsFragment extends Fragment {
             recyclerView.setVisibility(View.VISIBLE);
             imageView.setVisibility(View.GONE);
         }
-        database.close();
-        return view;
     }
 }
