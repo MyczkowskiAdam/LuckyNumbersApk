@@ -2,6 +2,7 @@ package com.luckynumbers.mycax.luckynumbers;
 
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 
@@ -14,6 +15,10 @@ public class MainActivity extends AppCompatActivity implements OnTabSelectListen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean("app_dark_theme",false)) {
+            setTheme(R.style.AppTheme_Dark);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navigation = (BottomBar) findViewById(R.id.navigation);

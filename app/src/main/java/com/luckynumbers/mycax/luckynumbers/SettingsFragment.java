@@ -7,8 +7,9 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.content.Intent;
 import android.net.Uri;
+import android.preference.SwitchPreference;
 
-public class SettingsFragment extends PreferenceFragment implements Preference.OnPreferenceClickListener {
+public class SettingsFragment extends PreferenceFragment implements Preference.OnPreferenceClickListener, SwitchPreference.OnPreferenceChangeListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,18 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
         Preference vDeleteAll = (Preference) findPreference("app_delete_results");
         vDeleteAll.setOnPreferenceClickListener(this);
 
+        SwitchPreference sDarkTheme = (SwitchPreference) findPreference("app_dark_theme");
+        sDarkTheme.setOnPreferenceChangeListener(this);
+
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object object) {
+        getActivity().finish();
+        final Intent intent = getActivity().getIntent();
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        getActivity().startActivity(intent);
+        return true;
     }
 
     @Override
