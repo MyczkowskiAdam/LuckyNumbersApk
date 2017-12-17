@@ -15,7 +15,7 @@
     <string name="enable_dark_theme">Enable Dark Theme</string>
 
     <string name="build_version">App Version</string>
-    <string name="build_version_string">1.5</string>
+    <string name="build_version_string">2.0</string>
 
     <string name="app_creator">Creator</string>
     <string name="app_creator_name">Adam Myczkowski (mycax)</string>
