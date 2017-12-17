@@ -1,0 +1,21 @@
+<tabs>
+
+    <tab
+        id="@+id/navigation_luckynumbers"
+        icon="@drawable/ic_clover_white"
+        title="@string/title_luckynumbers"
+        barColorWhenSelected="#424242" />
+
+    <tab
+        id="@+id/navigation_results"
+        icon="@drawable/ic_view_results_white_24dp"
+        title="@string/title_results"
+        barColorWhenSelected="#212121" />
+
+    <tab
+        id="@+id/navigation_settings"
+        icon="@drawable/ic_settings_white_24dp"
+        title="@string/title_settings"
+        barColorWhenSelected="#424242"/>
+
+</tabs>

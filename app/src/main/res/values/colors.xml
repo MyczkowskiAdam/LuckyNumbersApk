@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="colorPrimaryInverse">#212121</color>
+    <color name="colorPrimaryInverse">#000000</color>
     <color name="colorPrimaryDarkInverse">#000000</color>
-    <color name="colorAccentInverse">#7986cb</color>
+    <color name="colorAccentInverse">#4285F4</color>
 </resources>

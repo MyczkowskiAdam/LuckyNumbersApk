@@ -17,7 +17,7 @@
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:bb_tabXmlResource="@xml/navigation"
+        app:bb_tabXmlResource="?attr/navigation_theme"
         app:bb_behavior="shifting|shy"
         android:layout_gravity="bottom"/>
 

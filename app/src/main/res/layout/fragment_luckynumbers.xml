@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="@android:color/black"
+        android:textColor="?attr/output_color"
         android:textSize="18sp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -112,7 +112,7 @@
         android:background="@null"
         app:layout_constraintEnd_toEndOf="@+id/lastName"
         app:layout_constraintTop_toTopOf="@+id/lastName"
-        app:srcCompat="@drawable/ic_refresh_grey_24dp" />
+        app:srcCompat="?attr/ic_refresh" />
 
     <ImageButton
         android:id="@+id/imageButtonCalculate"
@@ -124,6 +124,6 @@
         android:background="@null"
         app:layout_constraintStart_toStartOf="@+id/lastName"
         app:layout_constraintTop_toTopOf="@+id/lastName"
-        app:srcCompat="@drawable/ic_done_grey_24dp" />
+        app:srcCompat="?attr/ic_done" />
 
 </android.support.constraint.ConstraintLayout>

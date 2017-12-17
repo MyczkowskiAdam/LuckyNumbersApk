@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AppTheme.Dark">
+        <attr name="row_head_text" format="color" />
+        <attr name="output_color" format="color" />
+        <attr name="navigation_theme" format="reference" />
+        <attr name="ic_done" format="reference" />
+        <attr name="ic_refresh" format="reference" />
+    </declare-styleable>
+</resources>

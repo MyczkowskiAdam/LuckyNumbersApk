@@ -7,6 +7,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.content.Intent;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
 
 public class SettingsFragment extends PreferenceFragment implements Preference.OnPreferenceClickListener, SwitchPreference.OnPreferenceChangeListener {
@@ -50,7 +51,8 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
         }
         else if (preference == findPreference("app_delete_results")) {
             new AlertDialog.Builder(getActivity())
-                    .setIcon(R.drawable.ic_warning_black_24dp)
+                    .setIcon(!PreferenceManager.getDefaultSharedPreferences(getActivity())
+                            .getBoolean("app_dark_theme", false) ? R.drawable.ic_warning_black_24dp : R.drawable.ic_warning_white_24dp)
                     .setTitle("Clear database")
                     .setMessage("Are you sure you want clear all contents of the database?")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener()

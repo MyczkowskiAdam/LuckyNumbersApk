@@ -3,6 +3,7 @@ package com.luckynumbers.mycax.luckynumbers;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -40,7 +41,8 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
         @Override
         public boolean onLongClick(View v) {
             new AlertDialog.Builder(context)
-                    .setIcon(R.drawable.ic_warning_black_24dp)
+                    .setIcon(!PreferenceManager.getDefaultSharedPreferences(context)
+                            .getBoolean("app_dark_theme", false) ? R.drawable.ic_warning_black_24dp : R.drawable.ic_warning_white_24dp)
                     .setTitle("Delete result")
                     .setMessage("Are you sure you want delete this result?")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
