@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -35,6 +36,10 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
             result = (TextView) itemView.findViewById(R.id.card_result);
 
             CardView cardView = (CardView) itemView.findViewById(R.id.card_view);
+            if (PreferenceManager.getDefaultSharedPreferences(context)
+                    .getBoolean("app_enable_grid",false)) {
+                cardView.setLayoutParams(new RelativeLayout.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, 200));
+            }
             cardView.setOnLongClickListener(this);
         }
 
@@ -52,7 +57,6 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
                             database.deleteEntry(Long.parseLong(id));
                             dataModelArrayList.remove(getAdapterPosition());
                             notifyItemRemoved(getAdapterPosition());
-                            notifyDataSetChanged();
                             resultsCallBack.getEmpty();
                             database.close();
                         }

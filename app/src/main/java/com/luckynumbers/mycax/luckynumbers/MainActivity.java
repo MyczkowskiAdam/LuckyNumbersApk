@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
@@ -50,5 +52,11 @@ public class MainActivity extends AppCompatActivity implements OnTabSelectListen
                     .replace(R.id.fragmentContainer, new SettingsFragment())
                     .commit();
         }
+    }
+
+    public String getMainTag() {
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.activity_main, null);
+        return (String) view.getTag();
     }
 }

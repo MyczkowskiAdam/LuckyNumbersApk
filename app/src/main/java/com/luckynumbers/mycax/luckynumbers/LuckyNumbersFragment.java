@@ -1,12 +1,16 @@
 package com.luckynumbers.mycax.luckynumbers;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.support.annotation.AttrRes;
+import android.support.annotation.ColorInt;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -55,7 +59,7 @@ public class LuckyNumbersFragment extends Fragment implements
 
         if (v.getId() == R.id.imageButtonCalculate) {
             if (isEmpty(mFirstName) && isEmpty(mLastName) || isEmpty(mFirstName) || isEmpty(mLastName)) {
-                Toast.makeText(getActivity(), "Input fields cannot be empty", Toast.LENGTH_SHORT).show();
+                Snackbar.make(v, "Input fields cannot be empty", Snackbar.LENGTH_SHORT).show();
 
             } else if (isAlpha(mFirstName.getText().toString()) && isAlpha(mLastName.getText().toString())) {
                 mOutputText.setText(Calculate(mFirstName.getText().toString(), mLastName.getText().toString()));
@@ -64,7 +68,7 @@ public class LuckyNumbersFragment extends Fragment implements
                 database.close();
 
             } else {
-                Toast.makeText(getActivity(), "Input fields can only contain letters!", Toast.LENGTH_SHORT).show();
+                Snackbar.make(v, "Input fields can only contain letters!", Snackbar.LENGTH_SHORT).show();
             }
         } else if (v.getId() == R.id.imageButtonReset) {
             mFirstName.getText().clear();

@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
+import android.support.design.widget.Snackbar;
 
 public class SettingsFragment extends PreferenceFragment implements Preference.OnPreferenceClickListener, SwitchPreference.OnPreferenceChangeListener {
 
@@ -30,6 +31,10 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
         SwitchPreference sDarkTheme = (SwitchPreference) findPreference("app_dark_theme");
         sDarkTheme.setOnPreferenceChangeListener(this);
 
+        SwitchPreference sGridView = (SwitchPreference) findPreference("app_enable_grid");
+        if (((MainActivity)getActivity()).getMainTag().equals("phone")) {
+            getPreferenceScreen().removePreference(sGridView);
+        }
     }
 
     @Override
@@ -62,6 +67,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
                             DataBHelper database = new DataBHelper(getActivity());
                             database.clearDatabase();
                             database.close();
+                            Snackbar.make(getView(), "Database successfully cleared!", Snackbar.LENGTH_SHORT).show();
                         }
 
                     })

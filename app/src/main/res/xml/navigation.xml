@@ -4,7 +4,7 @@
         id="@+id/navigation_luckynumbers"
         icon="@drawable/ic_clover_white"
         title="@string/title_luckynumbers"
-        barColorWhenSelected="@color/colorPrimaryDark" />
+        barColorWhenSelected="@color/colorPrimaryDarkP" />
 
     <tab
         id="@+id/navigation_results"
