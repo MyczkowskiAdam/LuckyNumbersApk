@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -44,7 +45,7 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
         }
 
         @Override
-        public boolean onLongClick(View v) {
+        public boolean onLongClick(final View v) {
             new AlertDialog.Builder(context)
                     .setIcon(!PreferenceManager.getDefaultSharedPreferences(context)
                             .getBoolean("app_dark_theme", false) ? R.drawable.ic_warning_black_24dp : R.drawable.ic_warning_white_24dp)
@@ -59,6 +60,7 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
                             notifyItemRemoved(getAdapterPosition());
                             resultsCallBack.getEmpty();
                             database.close();
+                            Snackbar.make(v, "Successfully deleted!", Snackbar.LENGTH_SHORT).show();
                         }
 
                     })

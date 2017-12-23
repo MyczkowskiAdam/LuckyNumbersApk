@@ -25,11 +25,6 @@ public class MainActivity extends AppCompatActivity implements OnTabSelectListen
         setContentView(R.layout.activity_main);
         navigation = (BottomBar) findViewById(R.id.navigation);
         navigation.setOnTabSelectListener(this);
-        if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction().replace(
-                    R.id.fragmentContainer, new LuckyNumbersFragment())
-                    .commit();
-        }
     }
 
     @Override
