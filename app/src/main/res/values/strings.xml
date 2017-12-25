@@ -26,4 +26,7 @@
 
     <string name="delete_results">Clear results database</string>
     <string name="delete_results_summary">Delete all contents from results database</string>
+
+    <string name="app_libs">About project</string>
+    <string name="app_libs_summary">Open source libraries used</string>
 </resources>

@@ -26,4 +26,8 @@
         android:title="@string/app_github"
         android:summary="@string/app_github_summary"/>
 
+    <Preference android:key="app_opensource_libs"
+        android:title="@string/app_libs"
+        android:summary="@string/app_libs_summary"/>
+
 </PreferenceScreen>

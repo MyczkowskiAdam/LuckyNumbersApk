@@ -11,6 +11,9 @@ import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
 import android.support.design.widget.Snackbar;
 
+import com.mikepenz.aboutlibraries.Libs;
+import com.mikepenz.aboutlibraries.LibsBuilder;
+
 public class SettingsFragment extends PreferenceFragment implements Preference.OnPreferenceClickListener, SwitchPreference.OnPreferenceChangeListener {
 
     @Override
@@ -27,6 +30,9 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
 
         Preference vDeleteAll = (Preference) findPreference("app_delete_results");
         vDeleteAll.setOnPreferenceClickListener(this);
+
+        Preference vAbout = (Preference) findPreference("app_opensource_libs");
+        vAbout.setOnPreferenceClickListener(this);
 
         SwitchPreference sDarkTheme = (SwitchPreference) findPreference("app_dark_theme");
         sDarkTheme.setOnPreferenceChangeListener(this);
@@ -73,6 +79,15 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
                     })
                     .setNegativeButton("No", null)
                     .show();
+        }
+        else if (preference == findPreference("app_opensource_libs")) {
+            new LibsBuilder()
+                    .withActivityStyle(PreferenceManager.getDefaultSharedPreferences(getActivity())
+                            .getBoolean("app_dark_theme",false) ? Libs.ActivityStyle.DARK : Libs.ActivityStyle.LIGHT)
+                    .withAutoDetect(true)
+                    .withAboutIconShown(true)
+                    .withAboutVersionShown(true)
+                    .start(getActivity());
         }
         return true;
     }
