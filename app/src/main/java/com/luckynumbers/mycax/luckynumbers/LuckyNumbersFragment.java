@@ -1,18 +1,16 @@
 package com.luckynumbers.mycax.luckynumbers;
 
 import android.app.Fragment;
-import android.content.Context;
-import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.support.annotation.AttrRes;
-import android.support.annotation.ColorInt;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
+import com.hanks.htextview.base.AnimationListener;
+import com.hanks.htextview.base.HTextView;
 
 public class LuckyNumbersFragment extends Fragment implements
         View.OnClickListener {
@@ -25,7 +23,7 @@ public class LuckyNumbersFragment extends Fragment implements
 
     private EditText mFirstName;
     private EditText mLastName;
-    private TextView mOutputText;
+    private HTextView mOutputText;
     private ImageButton mButton_Calculate;
     private ImageButton mButton_Reset;
     private DataBHelper database;
@@ -45,7 +43,13 @@ public class LuckyNumbersFragment extends Fragment implements
                 container, false);
         mFirstName = (EditText) view.findViewById(R.id.firstName);
         mLastName = (EditText) view.findViewById(R.id.lastName);
-        mOutputText = (TextView) view.findViewById(R.id.output_text);
+        mOutputText = (HTextView) view.findViewById(R.id.output_text);
+        mOutputText.setAnimationListener(new AnimationListener() {
+            @Override
+            public void onAnimationEnd(HTextView hTextView) {
+                //noop
+            }
+        });
 
         mButton_Calculate = (ImageButton) view.findViewById(R.id.imageButtonCalculate);
         mButton_Calculate.setOnClickListener(this);
@@ -62,9 +66,10 @@ public class LuckyNumbersFragment extends Fragment implements
                 Snackbar.make(v, "Input fields cannot be empty", Snackbar.LENGTH_SHORT).show();
 
             } else if (isAlpha(mFirstName.getText().toString()) && isAlpha(mLastName.getText().toString())) {
-                mOutputText.setText(Calculate(mFirstName.getText().toString(), mLastName.getText().toString()));
+                String result = Calculate(mFirstName.getText().toString(), mLastName.getText().toString());
+                mOutputText.animateText(result);
                 database = new DataBHelper(getActivity());
-                database.saveToDB(mFirstName.getText().toString(), mLastName.getText().toString(), mOutputText.getText().toString());
+                database.saveToDB(mFirstName.getText().toString(), mLastName.getText().toString(), result);
                 database.close();
 
             } else {
@@ -73,7 +78,7 @@ public class LuckyNumbersFragment extends Fragment implements
         } else if (v.getId() == R.id.imageButtonReset) {
             mFirstName.getText().clear();
             mLastName.getText().clear();
-            mOutputText.setText("");
+            mOutputText.animateText("");
         }
     }
 

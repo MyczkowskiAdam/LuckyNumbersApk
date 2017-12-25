@@ -3,8 +3,8 @@
 
     <!-- LuckyNumbers -->
     <string name="app_greetings">Welcome to Lucky Numbers! This simple application will calculate your lucky number!</string>
-    <string name="enter_fname">Enter your first name below:</string>
-    <string name="enter_lname">Enter your last name below:</string>
+    <string name="enter_fname">Enter your first name here</string>
+    <string name="enter_lname">Enter your last name here</string>
 
     <!-- Bottom navbar titles -->
     <string name="title_luckynumbers">Lucky Numbers</string>
@@ -16,7 +16,7 @@
     <string name="enable_gridview">Enable grid view</string>
 
     <string name="build_version">App Version</string>
-    <string name="build_version_string">2.0.1</string>
+    <string name="build_version_string">2.0.2</string>
 
     <string name="app_creator">Creator</string>
     <string name="app_creator_name">Adam Myczkowski (mycax)</string>
