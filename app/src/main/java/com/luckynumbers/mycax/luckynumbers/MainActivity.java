@@ -17,10 +17,8 @@ public class MainActivity extends AppCompatActivity implements OnTabSelectListen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (PreferenceManager.getDefaultSharedPreferences(this)
-                .getBoolean("app_dark_theme",false)) {
-            setTheme(R.style.AppTheme_Dark);
-        }
+        setTheme(PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean("app_dark_theme",false) ? R.style.AppTheme_Dark : R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navigation = (BottomBar) findViewById(R.id.navigation);
