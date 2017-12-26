@@ -49,7 +49,7 @@ public class DataBHelper extends SQLiteOpenHelper {
     public List<DataModel> readDB(){
         List<DataModel> data=new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from "+RESULTS_TABLE_NAME+" ;",null);
+        Cursor cursor = db.rawQuery("select * from "+RESULTS_TABLE_NAME+" ORDER BY " + RESULTS_COLUMN_ID + " DESC",null );
         StringBuffer stringBuffer = new StringBuffer();
         DataModel dataModel = null;
         while (cursor.moveToNext()) {
