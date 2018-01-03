@@ -1,5 +1,6 @@
 package com.luckynumbers.mycax.luckynumbers;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,9 +17,9 @@ import android.widget.TextView;
 import java.util.List;
 
 public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myholder> {
-    List<DataModel> dataModelArrayList;
-    Context context;
-    ResultsCallBack resultsCallBack;
+    private final List<DataModel> dataModelArrayList;
+    private final Context context;
+    private ResultsCallBack resultsCallBack;
 
     public DatabaseAdapter(List<DataModel> dataModelArrayList, Context context) {
         this.dataModelArrayList = dataModelArrayList;
@@ -26,17 +27,18 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
     }
 
     class Myholder extends RecyclerView.ViewHolder implements CardView.OnLongClickListener {
-        TextView name, result;
+        final TextView name;
+        final TextView result;
         String id;
 
 
         public Myholder(View itemView) {
             super(itemView);
 
-            name = (TextView) itemView.findViewById(R.id.card_name);
-            result = (TextView) itemView.findViewById(R.id.card_result);
+            name = itemView.findViewById(R.id.card_name);
+            result = itemView.findViewById(R.id.card_result);
 
-            CardView cardView = (CardView) itemView.findViewById(R.id.card_view);
+            CardView cardView = itemView.findViewById(R.id.card_view);
             if (PreferenceManager.getDefaultSharedPreferences(context)
                     .getBoolean("app_enable_grid",false)) {
                 cardView.setLayoutParams(new RelativeLayout.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, 200));
@@ -72,7 +74,7 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
 
     @Override
     public Myholder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row, null);
+        @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row, null);
         return new Myholder(view);
 
     }

@@ -1,22 +1,22 @@
 package com.luckynumbers.mycax.luckynumbers;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataBHelper extends SQLiteOpenHelper {
+class DataBHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 2;
-    public static final String DATABASE_NAME = "results_database";
-    public static final String RESULTS_TABLE_NAME = "results_table";
-    public static final String RESULTS_COLUMN_ID = "_id";
-    public static final String RESULTS_COLUMN_NAME = "name";
-    public static final String RESULTS_COLUMN_RESULT = "result";
+    private static final String DATABASE_NAME = "results_database";
+    private static final String RESULTS_TABLE_NAME = "results_table";
+    private static final String RESULTS_COLUMN_ID = "_id";
+    private static final String RESULTS_COLUMN_NAME = "name";
+    private static final String RESULTS_COLUMN_RESULT = "result";
 
     public DataBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -49,9 +49,9 @@ public class DataBHelper extends SQLiteOpenHelper {
     public List<DataModel> readDB(){
         List<DataModel> data=new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from "+RESULTS_TABLE_NAME+" ORDER BY " + RESULTS_COLUMN_ID + " DESC",null );
-        StringBuffer stringBuffer = new StringBuffer();
-        DataModel dataModel = null;
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("select * from "+RESULTS_TABLE_NAME+" ORDER BY " + RESULTS_COLUMN_ID + " DESC",null );
+        @SuppressWarnings("MismatchedQueryAndUpdateOfStringBuilder") StringBuilder stringBuffer = new StringBuilder();
+        DataModel dataModel;
         while (cursor.moveToNext()) {
             dataModel= new DataModel();
             String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));

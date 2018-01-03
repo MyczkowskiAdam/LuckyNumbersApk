@@ -13,10 +13,13 @@
 
     <!-- Settings -->
     <string name="enable_dark_theme">Enable Dark Theme</string>
+    <string name="dark_theme_summary">Dark theme for Amoled displays</string>
+
     <string name="enable_gridview">Enable grid view</string>
+    <string name="gridview_summary">Display more results on the screen!</string>
 
     <string name="build_version">App Version</string>
-    <string name="build_version_string">2.0.3</string>
+    <string name="build_version_string">2.0.4</string>
 
     <string name="app_creator">Creator</string>
     <string name="app_creator_name">Adam Myczkowski (mycax)</string>
@@ -29,4 +32,9 @@
 
     <string name="app_libs">About project</string>
     <string name="app_libs_summary">Open source libraries used</string>
+
+    <!-- Descriptions -->
+    <string name="process_desc">Run Lucky Numbers process</string>
+    <string name="reset_desc">Reset fields</string>
+    <string name="empty_datab_desc">Empty database drawable</string>
 </resources>

@@ -1,11 +1,11 @@
 package com.luckynumbers.mycax.luckynumbers;
 
 
-public class DataModel {
+class DataModel {
 
-    public String name;
-    public String result;
-    public String id;
+    private String name;
+    private String result;
+    private String id;
 
     public String getName() {
         return name;

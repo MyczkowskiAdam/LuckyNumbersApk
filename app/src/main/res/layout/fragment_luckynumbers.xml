@@ -73,6 +73,7 @@
 
     <ImageButton
         android:id="@+id/imageButtonReset"
+        android:contentDescription="@string/process_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="100dp"
@@ -85,6 +86,7 @@
 
     <ImageButton
         android:id="@+id/imageButtonCalculate"
+        android:contentDescription="@string/reset_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="100dp"

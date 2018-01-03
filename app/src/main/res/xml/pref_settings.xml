@@ -3,12 +3,14 @@
     <SwitchPreference
         android:defaultValue="false"
         android:key="app_dark_theme"
-        android:title="@string/enable_dark_theme" />
+        android:title="@string/enable_dark_theme"
+        android:summary="@string/dark_theme_summary" />
 
     <SwitchPreference
         android:defaultValue="false"
         android:key="app_enable_grid"
-        android:title="@string/enable_gridview" />
+        android:title="@string/enable_gridview"
+        android:summary="@string/gridview_summary" />
 
     <Preference android:key="build_app_version"
         android:title="@string/build_version"

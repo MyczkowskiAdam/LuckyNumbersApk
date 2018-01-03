@@ -12,7 +12,8 @@
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_toRightOf="@+id/navigation" />
+        android:layout_toRightOf="@+id/navigation"
+        android:layout_toEndOf="@+id/navigation"/>
 
     <com.roughike.bottombar.BottomBar
         android:id="@+id/navigation"

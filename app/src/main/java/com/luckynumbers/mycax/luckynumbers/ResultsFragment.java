@@ -20,22 +20,20 @@ import jp.wasabeef.recyclerview.animators.FadeInUpAnimator;
 
 public class ResultsFragment extends Fragment implements DatabaseAdapter.ResultsCallBack{
 
-    DataBHelper database;
-    RecyclerView recyclerView;
-    DatabaseAdapter recycler;
-    public List<DataModel> datamodel;
-    ImageView imageView;
+    private RecyclerView recyclerView;
+    private List<DataModel> datamodel;
+    private ImageView imageView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_results,
                 container, false);
-        datamodel = new ArrayList<DataModel>();
-        recyclerView = (RecyclerView) view.findViewById(R.id.app_recycle_view);
-        database = new DataBHelper(getActivity());
+        datamodel = new ArrayList<>();
+        recyclerView = view.findViewById(R.id.app_recycle_view);
+        DataBHelper database = new DataBHelper(getActivity());
         datamodel =  database.readDB();
-        recycler = new DatabaseAdapter(datamodel, getActivity());
+        DatabaseAdapter recycler = new DatabaseAdapter(datamodel, getActivity());
         recyclerView.setLayoutManager(PreferenceManager.getDefaultSharedPreferences(getActivity())
                 .getBoolean("app_enable_grid",false) ?
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL) :
@@ -45,7 +43,7 @@ public class ResultsFragment extends Fragment implements DatabaseAdapter.Results
         adapterAnim.setInterpolator(new OvershootInterpolator());
         adapterAnim.setFirstOnly(false);
         recyclerView.setAdapter(adapterAnim);
-        imageView = (ImageView) view.findViewById(R.id.imageView);
+        imageView = view.findViewById(R.id.imageView);
         recycler.setEmptyDrawableListener(this);
         getEmpty();
         database.close();

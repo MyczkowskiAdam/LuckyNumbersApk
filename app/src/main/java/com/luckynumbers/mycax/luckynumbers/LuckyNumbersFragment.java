@@ -24,9 +24,6 @@ public class LuckyNumbersFragment extends Fragment implements
     private EditText mFirstName;
     private EditText mLastName;
     private HTextView mOutputText;
-    private ImageButton mButton_Calculate;
-    private ImageButton mButton_Reset;
-    private DataBHelper database;
 
     private boolean isEmpty(EditText etText) {
         return etText.getText().toString().trim().length() == 0;
@@ -41,9 +38,9 @@ public class LuckyNumbersFragment extends Fragment implements
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_luckynumbers,
                 container, false);
-        mFirstName = (EditText) view.findViewById(R.id.firstName);
-        mLastName = (EditText) view.findViewById(R.id.lastName);
-        mOutputText = (HTextView) view.findViewById(R.id.output_text);
+        mFirstName = view.findViewById(R.id.firstName);
+        mLastName = view.findViewById(R.id.lastName);
+        mOutputText = view.findViewById(R.id.output_text);
         mOutputText.setAnimationListener(new AnimationListener() {
             @Override
             public void onAnimationEnd(HTextView hTextView) {
@@ -51,9 +48,9 @@ public class LuckyNumbersFragment extends Fragment implements
             }
         });
 
-        mButton_Calculate = (ImageButton) view.findViewById(R.id.imageButtonCalculate);
+        ImageButton mButton_Calculate = view.findViewById(R.id.imageButtonCalculate);
         mButton_Calculate.setOnClickListener(this);
-        mButton_Reset = (ImageButton) view.findViewById(R.id.imageButtonReset);
+        ImageButton mButton_Reset = view.findViewById(R.id.imageButtonReset);
         mButton_Reset.setOnClickListener(this);
         return view;
     }
@@ -68,7 +65,7 @@ public class LuckyNumbersFragment extends Fragment implements
             } else if (isAlpha(mFirstName.getText().toString()) && isAlpha(mLastName.getText().toString())) {
                 String result = Calculate(mFirstName.getText().toString(), mLastName.getText().toString());
                 mOutputText.animateText(result);
-                database = new DataBHelper(getActivity());
+                DataBHelper database = new DataBHelper(getActivity());
                 database.saveToDB(mFirstName.getText().toString(), mLastName.getText().toString(), result);
                 database.close();
 

@@ -40,9 +40,9 @@ int convert(std::string Nm) {
 
     int NmVal = NULL;
     for (unsigned int i = 0; i<Nm.length(); i++) {
-        int tmp = alphabet.find(NmAr[i]); // This function takes a char from char*, tries to find it in the alphabet string, returns its positiion as a integer and writes results to tmp integer
+        int tmp = (int) alphabet.find(NmAr[i]); // This function takes a char from char*, tries to find it in the alphabet string, returns its positiion as a integer and writes results to tmp integer
         if (tmp == std::string::npos) { // npos (-1) is returned when char we looking for is not in a given string (no position)
-            tmp = CAPalphabet.find(NmAr[i]); // This function takes a char from char*, tries to find it in the CAPalphabet string, returns its positiion as a integer and writes results to tmp integer
+            tmp = (int) CAPalphabet.find(NmAr[i]); // This function takes a char from char*, tries to find it in the CAPalphabet string, returns its positiion as a integer and writes results to tmp integer
             if (tmp == std::string::npos) { // npos (-1) is returned when char we looking for is not in a given string (no position)
                 ALOG("Error at line %d in tmp is %i", __LINE__,  tmp);
                 break;
