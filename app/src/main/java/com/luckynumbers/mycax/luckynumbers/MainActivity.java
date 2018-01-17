@@ -19,6 +19,7 @@ import shortbread.Shortcut;
 @SuppressWarnings("ALL")
 public class MainActivity extends AppCompatActivity implements OnTabSelectListener {
 
+    BottomBar navigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Shortbread.create(this);
@@ -26,15 +27,15 @@ public class MainActivity extends AppCompatActivity implements OnTabSelectListen
                 .getBoolean("app_dark_theme",false) ? R.style.AppTheme_Dark : R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomBar navigation = findViewById(R.id.navigation);
+        navigation = findViewById(R.id.navigation);
         navigation.setOnTabSelectListener(this);
     }
 
     @Override
     public void onTabSelected(@IdRes int tabId) {
-        if (tabId == R.id.navigation_luckynumbers) showLucky();
-        if (tabId == R.id.navigation_results) showResults();
-        if (tabId == R.id.navigation_settings) showSettings();
+        if (tabId == R.id.navigation_luckynumbers) launchFragment(new LuckyNumbersFragment());
+        if (tabId == R.id.navigation_results) launchFragment(new ResultsFragment());
+        if (tabId == R.id.navigation_settings) launchFragment(new SettingsFragment());
     }
 
     public String getMainTag() {
@@ -53,15 +54,19 @@ public class MainActivity extends AppCompatActivity implements OnTabSelectListen
     @Shortcut(id = "luckynumbers", icon = R.drawable.ic_shortcut_clover, shortLabel = "Lucky Number")
     public void showLucky() {
         launchFragment(new LuckyNumbersFragment());
+        navigation.selectTabWithId(R.id.navigation_luckynumbers);
+
     }
 
     @Shortcut(id = "results", icon = R.drawable.ic_shortcut_view_headline, shortLabel = "Results")
     public void showResults() {
         launchFragment(new ResultsFragment());
+        navigation.selectTabWithId(R.id.navigation_results);
     }
 
     @Shortcut(id = "settings", icon = R.drawable.ic_shortcut_settings, shortLabel = "Settings")
     public void showSettings() {
         launchFragment(new SettingsFragment());
+        navigation.selectTabWithId(R.id.navigation_settings);
     }
 }
