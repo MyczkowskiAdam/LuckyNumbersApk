@@ -29,7 +29,7 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
     class Myholder extends RecyclerView.ViewHolder implements CardView.OnLongClickListener {
         final TextView name;
         final TextView result;
-        public String id;
+        String id;
 
 
         public Myholder(View itemView) {
@@ -57,7 +57,7 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             DataBHelper database = new DataBHelper(context);
-                            database.deleteEntry(name.getText().toString());
+                            database.deleteEntry(Long.parseLong(id));
                             dataModelArrayList.remove(getAdapterPosition());
                             notifyItemRemoved(getAdapterPosition());
                             resultsCallBack.getEmpty();

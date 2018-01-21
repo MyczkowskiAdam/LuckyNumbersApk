@@ -96,9 +96,9 @@ class DataBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.close();
     }
 
-    public void deleteEntry(String row) {
+    public void deleteEntry(long row) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        sqLiteDatabase.delete(RESULTS_TABLE_NAME, RESULTS_COLUMN_NAME + "='" + row + "'", null);
+        sqLiteDatabase.delete(RESULTS_TABLE_NAME, RESULTS_COLUMN_ID + "=" + row, null);
         sqLiteDatabase.close();
     }
 }

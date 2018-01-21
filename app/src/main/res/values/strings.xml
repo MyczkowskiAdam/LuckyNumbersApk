@@ -25,7 +25,7 @@
     <string name="enable_dbdups_summary_false">Not allowing duplicates</string>
 
     <string name="build_version">App Version</string>
-    <string name="build_version_string">2.0.6</string>
+    <string name="build_version_string">2.0.7</string>
 
     <string name="app_creator">Creator</string>
     <string name="app_creator_name">Adam Myczkowski (mycax)</string>

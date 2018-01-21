@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements OnTabSelectListen
                 .commit();
     }
 
+    @SuppressWarnings("unused")
     @Shortcut(id = "luckynumbers", icon = R.drawable.ic_shortcut_clover, shortLabel = "Lucky Number")
     public void showLucky() {
         launchFragment(new LuckyNumbersFragment());
@@ -57,12 +58,14 @@ public class MainActivity extends AppCompatActivity implements OnTabSelectListen
 
     }
 
+    @SuppressWarnings("unused")
     @Shortcut(id = "results", icon = R.drawable.ic_shortcut_view_headline, shortLabel = "Results")
     public void showResults() {
         launchFragment(new ResultsFragment());
         navigation.selectTabWithId(R.id.navigation_results);
     }
 
+    @SuppressWarnings("unused")
     @Shortcut(id = "settings", icon = R.drawable.ic_shortcut_settings, shortLabel = "Settings")
     public void showSettings() {
         launchFragment(new SettingsFragment());

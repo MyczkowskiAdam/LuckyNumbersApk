@@ -4,8 +4,6 @@
     <entry_points version="2.0">
       <entry_point TYPE="field" FQNAME="com.luckynumbers.mycax.luckynumbers.DatabaseAdapter.Myholder id" />
     </entry_points>
-    <pattern value="com.luckynumbers.mycax.luckynumbers.DatabaseAdapter.Myholder" />
-    <pattern value="com.luckynumbers.mycax.luckynumbers.DatabaseAdapter" />
   </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
