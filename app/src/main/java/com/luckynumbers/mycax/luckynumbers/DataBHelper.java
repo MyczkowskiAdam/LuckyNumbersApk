@@ -6,6 +6,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.preference.PreferenceManager;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +19,11 @@ class DataBHelper extends SQLiteOpenHelper {
     private static final String RESULTS_COLUMN_ID = "_id";
     private static final String RESULTS_COLUMN_NAME = "name";
     private static final String RESULTS_COLUMN_RESULT = "result";
+    private final Context context;
 
     public DataBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -42,18 +46,36 @@ class DataBHelper extends SQLiteOpenHelper {
         String name = fname + " " + lname;
         values.put(DataBHelper.RESULTS_COLUMN_NAME, name);
         values.put(DataBHelper.RESULTS_COLUMN_RESULT, result);
-        database.insert(DataBHelper.RESULTS_TABLE_NAME, null, values);
+        if (PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean("app_allow_dbdups", false))
+            database.insert(DataBHelper.RESULTS_TABLE_NAME, null, values);
+        else {
+            if (!IsInDB(name)) database.insert(DataBHelper.RESULTS_TABLE_NAME, null, values);
+            else Toast.makeText(context, "Duplicate name!", Toast.LENGTH_SHORT).show();
+        }
         database.close();
     }
 
-    public List<DataModel> readDB(){
-        List<DataModel> data=new ArrayList<>();
+    private boolean IsInDB(String fieldValue) {
+        SQLiteDatabase database = getWritableDatabase();
+        String Query = "Select * from " + RESULTS_TABLE_NAME + " where " + RESULTS_COLUMN_NAME + " = '" + fieldValue + "'";
+        Cursor cursor = database.rawQuery(Query, null);
+        if (cursor.getCount() <= 0) {
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
+    }
+
+    public List<DataModel> readDB() {
+        List<DataModel> data = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery("select * from "+RESULTS_TABLE_NAME+" ORDER BY " + RESULTS_COLUMN_ID + " DESC",null );
         @SuppressWarnings("MismatchedQueryAndUpdateOfStringBuilder") StringBuilder stringBuffer = new StringBuilder();
         DataModel dataModel;
         while (cursor.moveToNext()) {
-            dataModel= new DataModel();
+            dataModel = new DataModel();
             String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
             String result = cursor.getString(cursor.getColumnIndexOrThrow("result"));
             String id = cursor.getString(cursor.getColumnIndexOrThrow("_id"));
@@ -69,14 +91,14 @@ class DataBHelper extends SQLiteOpenHelper {
 
     public void clearDatabase() {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String clearDBQuery = "DELETE FROM "+RESULTS_TABLE_NAME;
+        String clearDBQuery = "DELETE FROM " + RESULTS_TABLE_NAME;
         sqLiteDatabase.execSQL(clearDBQuery);
         sqLiteDatabase.close();
     }
 
-    public void deleteEntry(long row) {
+    public void deleteEntry(String row) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        sqLiteDatabase.delete(RESULTS_TABLE_NAME, RESULTS_COLUMN_ID + "=" + row, null);
+        sqLiteDatabase.delete(RESULTS_TABLE_NAME, RESULTS_COLUMN_NAME + "='" + row + "'", null);
         sqLiteDatabase.close();
     }
 }

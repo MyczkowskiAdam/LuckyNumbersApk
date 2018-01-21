@@ -12,14 +12,20 @@
     <string name="title_settings">Settings</string>
 
     <!-- Settings -->
-    <string name="enable_dark_theme">Enable Dark Theme</string>
-    <string name="dark_theme_summary">Dark theme for Amoled displays</string>
+    <string name="enable_dark_theme">Enable dark theme</string>
+    <string name="dark_theme_summary_true">Using dark theme</string>
+    <string name="dark_theme_summary_false">Using light theme</string>
 
     <string name="enable_gridview">Enable grid view</string>
-    <string name="gridview_summary">Display more results on the screen!</string>
+    <string name="gridview_summary_true">Displaying more content on the screen!</string>
+    <string name="gridview_summary_false">Not using grid view</string>
+
+    <string name="enable_dbdups">Allow duplicate names to be saved</string>
+    <string name="enable_dbdups_summary_true">Allowing duplicates</string>
+    <string name="enable_dbdups_summary_false">Not allowing duplicates</string>
 
     <string name="build_version">App Version</string>
-    <string name="build_version_string">2.0.5</string>
+    <string name="build_version_string">2.0.6</string>
 
     <string name="app_creator">Creator</string>
     <string name="app_creator_name">Adam Myczkowski (mycax)</string>

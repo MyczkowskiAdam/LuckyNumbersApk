@@ -22,6 +22,10 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
     private static final String APP_OPENSOURCE_LIBS = "app_opensource_libs";
     private static final String APP_DARK_THEME = "app_dark_theme";
     private static final String APP_ENABLE_GRID = "app_enable_grid";
+    private static final String APP_ALLOW_DBDUPS = "app_allow_dbdups";
+    private SwitchPreference sGridView;
+    private SwitchPreference sEnableDups;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,21 +46,40 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
         vAbout.setOnPreferenceClickListener(this);
 
         SwitchPreference sDarkTheme = (SwitchPreference) findPreference(APP_DARK_THEME);
+        sDarkTheme.setSummary(PreferenceManager.getDefaultSharedPreferences(getActivity())
+                .getBoolean(APP_DARK_THEME, false) ? R.string.dark_theme_summary_true : R.string.dark_theme_summary_false);
         sDarkTheme.setOnPreferenceChangeListener(this);
 
-        SwitchPreference sGridView = (SwitchPreference) findPreference(APP_ENABLE_GRID);
+        sGridView = (SwitchPreference) findPreference(APP_ENABLE_GRID);
         if (((MainActivity) getActivity()).getMainTag().equals("phone")) {
             getPreferenceScreen().removePreference(sGridView);
+        } else {
+            sGridView.setSummary(PreferenceManager.getDefaultSharedPreferences(getActivity())
+                    .getBoolean(APP_ENABLE_GRID, false) ? R.string.gridview_summary_true : R.string.gridview_summary_false);
+            sGridView.setOnPreferenceChangeListener(this);
         }
+
+        sEnableDups = (SwitchPreference) findPreference(APP_ALLOW_DBDUPS);
+        sEnableDups.setSummary(PreferenceManager.getDefaultSharedPreferences(getActivity())
+                .getBoolean(APP_ALLOW_DBDUPS, false) ? R.string.enable_dbdups_summary_true : R.string.enable_dbdups_summary_false);
+        sEnableDups.setOnPreferenceChangeListener(this);
+
     }
 
     @SuppressWarnings("ConstantConditions")
     @Override
     public boolean onPreferenceChange(Preference preference, Object object) {
-        getActivity().finish();
-        final Intent intent = getActivity().getIntent();
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        getActivity().startActivity(intent);
+        if (preference == findPreference(APP_DARK_THEME)) {
+            getActivity().finish();
+            final Intent intent = getActivity().getIntent();
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            getActivity().startActivity(intent);
+        } else if (preference == findPreference(APP_ENABLE_GRID))
+            sGridView.setSummary(!PreferenceManager.getDefaultSharedPreferences(getActivity())
+                    .getBoolean(APP_ENABLE_GRID, false) ? R.string.gridview_summary_true : R.string.gridview_summary_false);
+        else if (preference == findPreference(APP_ALLOW_DBDUPS))
+            sEnableDups.setSummary(!PreferenceManager.getDefaultSharedPreferences(getActivity())
+                    .getBoolean(APP_ALLOW_DBDUPS, false) ? R.string.enable_dbdups_summary_true : R.string.enable_dbdups_summary_false);
         return true;
     }
 

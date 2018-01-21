@@ -12,14 +12,12 @@
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_toRightOf="@+id/navigation"
         android:layout_toEndOf="@+id/navigation"/>
 
     <com.roughike.bottombar.BottomBar
         android:id="@+id/navigation"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         app:bb_tabXmlResource="?attr/navigation_theme"
         app:bb_inActiveTabAlpha="0.6"
