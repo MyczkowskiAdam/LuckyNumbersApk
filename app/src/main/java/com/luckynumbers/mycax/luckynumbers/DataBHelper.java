@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
+import com.luckynumbers.mycax.luckynumbers.datamodels.DataModelDB;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,22 +70,22 @@ class DataBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public List<DataModel> readDB() {
-        List<DataModel> data = new ArrayList<>();
+    public List<DataModelDB> readDB() {
+        List<DataModelDB> data = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery("select * from "+RESULTS_TABLE_NAME+" ORDER BY " + RESULTS_COLUMN_ID + " DESC",null );
         @SuppressWarnings("MismatchedQueryAndUpdateOfStringBuilder") StringBuilder stringBuffer = new StringBuilder();
-        DataModel dataModel;
+        DataModelDB dataModelDB;
         while (cursor.moveToNext()) {
-            dataModel = new DataModel();
+            dataModelDB = new DataModelDB();
             String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
             String result = cursor.getString(cursor.getColumnIndexOrThrow("result"));
             String id = cursor.getString(cursor.getColumnIndexOrThrow("_id"));
-            dataModel.setName(name);
-            dataModel.setResult(result);
-            dataModel.setId(id);
-            stringBuffer.append(dataModel);
-            data.add(dataModel);
+            dataModelDB.setName(name);
+            dataModelDB.setResult(result);
+            dataModelDB.setId(id);
+            stringBuffer.append(dataModelDB);
+            data.add(dataModelDB);
         }
         db.close();
         return data;

@@ -16,9 +16,10 @@ import com.roughike.bottombar.OnTabSelectListener;
 import shortbread.Shortbread;
 import shortbread.Shortcut;
 
-public class MainActivity extends AppCompatActivity implements OnTabSelectListener {
+public class MainActivity extends AppCompatActivity implements OnTabSelectListener{
 
     private BottomBar navigation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Shortbread.create(this);

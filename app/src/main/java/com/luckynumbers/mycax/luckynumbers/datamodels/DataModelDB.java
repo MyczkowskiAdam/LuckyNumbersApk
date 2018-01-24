@@ -1,7 +1,7 @@
-package com.luckynumbers.mycax.luckynumbers;
+package com.luckynumbers.mycax.luckynumbers.datamodels;
 
 
-class DataModel {
+public class DataModelDB {
 
     private String name;
     private String result;
