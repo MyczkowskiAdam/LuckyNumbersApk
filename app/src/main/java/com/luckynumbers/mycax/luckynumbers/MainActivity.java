@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements OnTabSelectListen
 
     private void launchFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.animator.fade_in, R.animator.fade_out)
+        fragmentTransaction.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_right, R.animator.enter_from_left, R.animator.exit_to_left)
                 .replace(R.id.fragmentContainer, fragment)
                 .commit();
     }

@@ -11,8 +11,8 @@
         android:layout_height="120dp"
         android:layout_gravity="top"
         android:orientation="vertical"
-        card_view:cardCornerRadius="4dp"
-        card_view:cardElevation="4dp"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardElevation="6dp"
         card_view:cardUseCompatPadding="true"
         card_view:contentPadding="10dp">
 
@@ -35,7 +35,7 @@
             android:id="@+id/fabChecked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
+            android:layout_gravity="clip_vertical|end|bottom"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:clickable="false"

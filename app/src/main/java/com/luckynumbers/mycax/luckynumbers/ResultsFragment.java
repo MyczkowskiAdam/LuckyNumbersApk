@@ -101,8 +101,7 @@ public class ResultsFragment extends Fragment implements DatabaseAdapter.Results
                             }
                         }
                         recycler.clearLists();
-                        floatingActionButton.setVisibility(View.INVISIBLE);
-                        floatingActionButton.startAnimation(fab_close);
+                        setFAB(selectedArrayList);
                         Toast.makeText(getActivity(), "Results successfully deleted", Toast.LENGTH_SHORT).show();
                     }
 

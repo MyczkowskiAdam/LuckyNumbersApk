@@ -6,8 +6,8 @@ android {
         applicationId "com.luckynumbers.mycax.luckynumbers"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 13
-        versionName "2.0.7"
+        versionCode 14
+        versionName "2.0.8"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -37,7 +37,7 @@ repositories {
 }
 
 dependencies {
-    def android_version = "27.0.2"
+    def android_version = "27.1.0"
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:$android_version"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'

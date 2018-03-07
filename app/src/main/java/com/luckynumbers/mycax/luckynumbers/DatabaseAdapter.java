@@ -43,13 +43,6 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
         private final Animation fab_close;
         String id;
 
-        public boolean listContains(List<DataModelSelected> list, String adapterPosition ) {
-            for (int i = 0; i < list.size();i++) {
-                if (list.get(i).getCurrentAdapterPosition().equals(adapterPosition)) return true;
-            }
-            return false;
-        }
-
         public int indexOfList(List<DataModelSelected> list, String adapterPosition) {
             for (int i = 0; i < list.size();i++) {
                 if (list.get(i).getCurrentAdapterPosition().equals(adapterPosition)) return i;
@@ -75,7 +68,7 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
             cardView.setOnClickListener(new CardView.OnClickListener() {
                 public void onClick(View v) {
                     String adapterPositions = String.valueOf(getAdapterPosition());
-                    if (listContains(selectedArrayList, adapterPositions)) {
+                    if (indexOfList(selectedArrayList, adapterPositions) != -1) {
                         selectedArrayList.remove(indexOfList(selectedArrayList, adapterPositions));
                         fabChecked.setVisibility(View.INVISIBLE);
                         fabChecked.startAnimation(fab_close);
