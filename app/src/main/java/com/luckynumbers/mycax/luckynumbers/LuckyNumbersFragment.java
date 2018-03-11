@@ -1,6 +1,7 @@
 package com.luckynumbers.mycax.luckynumbers;
 
 import android.app.Fragment;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -63,7 +64,7 @@ public class LuckyNumbersFragment extends Fragment implements
                 Snackbar.make(v, "Input fields cannot be empty", Snackbar.LENGTH_SHORT).show();
 
             } else if (isAlpha(mFirstName.getText().toString()) && isAlpha(mLastName.getText().toString())) {
-                String result = Calculate(mFirstName.getText().toString(), mLastName.getText().toString());
+                String result = getNumberMeaning(Calculate(mFirstName.getText().toString(), mLastName.getText().toString()));
                 mOutputText.animateText(result);
                 DataBHelper database = new DataBHelper(getActivity());
                 database.saveToDB(mFirstName.getText().toString(), mLastName.getText().toString(), result);
@@ -79,6 +80,12 @@ public class LuckyNumbersFragment extends Fragment implements
         }
     }
 
-    public native String Calculate(String jFirstName, String jLastName);
+    public String getNumberMeaning(int LuckyNumber) {
+        Resources res = getResources();
+        String[] meanings = res.getStringArray(R.array.number_meaning);
+        return meanings[LuckyNumber-1];
+    }
+
+    public native int Calculate(String jFirstName, String jLastName);
 
 }

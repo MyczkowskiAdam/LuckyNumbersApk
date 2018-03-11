@@ -10,21 +10,8 @@
 #define  ALOG(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
 
 /* VARIABLES USED */
-const std::string lucky[] = {
-        "are a natural leader",
-        "are a natural peacemaker",
-        "are creative and optimistic",
-        "are a hard worker",
-        "value freedom",
-        "are a carer and provider",
-        "are a thinker",
-        "have diplomatic skills",
-        "are selfless and generous"
-};
-
 const std::string alphabet = "abcdefghijklmnopqrstuvwxyz"; //Letters of alphabet used throughout the program
 const std::string CAPalphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //Capital letters of alphabet used throughout the program
-
 /* END VARIABLES LIST*/
 
 template <typename T>
@@ -68,21 +55,17 @@ int splitNumber(int Number) {
     }
     return Number;
 }
-std::string LuckyNumbersProcess(std::string FrNm, std::string LstNm) {
+int LuckyNumbersProcess(std::string FrNm, std::string LstNm) {
     int FrNmVal = convert(FrNm);
     FrNmVal = splitNumber(FrNmVal);
-
     int LstNmVal = convert(LstNm);
     LstNmVal = splitNumber(LstNmVal);
-
     int LuckyNumber = FrNmVal + LstNmVal;
-    LuckyNumber = splitNumber(LuckyNumber);
-
-    return "Your lucky number is " + ToString(LuckyNumber) + "!! This means that you " + lucky[LuckyNumber - 1];
+    return splitNumber(LuckyNumber);
 }
 
 extern "C"
-JNIEXPORT jstring JNICALL Java_com_luckynumbers_mycax_luckynumbers_LuckyNumbersFragment_Calculate (JNIEnv *env, jobject, jstring cFirstName, jstring cLastName) {
-    return env->NewStringUTF(LuckyNumbersProcess(ToString(env->GetStringUTFChars(cFirstName, NULL )),
-                                                 ToString(env->GetStringUTFChars(cLastName, NULL))).c_str());
+JNIEXPORT jint JNICALL Java_com_luckynumbers_mycax_luckynumbers_LuckyNumbersFragment_Calculate (JNIEnv *env, jobject, jstring cFirstName, jstring cLastName) {
+    return LuckyNumbersProcess(ToString(env->GetStringUTFChars(cFirstName, NULL )),
+                                                 ToString(env->GetStringUTFChars(cLastName, NULL)));
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="number_meaning">
+        <item>Your lucky number is 1!! This means that you are a natural leader</item>
+        <item>Your lucky number is 2!! This means that you are a natural peacemaker</item>
+        <item>Your lucky number is 3!! This means that you are creative and optimistic</item>
+        <item>Your lucky number is 4!! This means that you are a hard worker</item>
+        <item>Your lucky number is 5!! This means that you value freedom</item>
+        <item>Your lucky number is 6!! This means that you are a carer and provider</item>
+        <item>Your lucky number is!! This means that you 7 are a thinker</item>
+        <item>Your lucky number is!! This means that you 8 have diplomatic skills</item>
+        <item>Your lucky number is!! This means that you 9 are selfless and generous</item>
+    </string-array>
+</resources>
