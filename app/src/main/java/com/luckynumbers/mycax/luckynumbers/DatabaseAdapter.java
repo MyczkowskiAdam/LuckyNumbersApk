@@ -60,10 +60,6 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
             fab_close = AnimationUtils.loadAnimation(context, R.anim.fab_close);
 
             CardView cardView = itemView.findViewById(R.id.card_view);
-            if (PreferenceManager.getDefaultSharedPreferences(context)
-                    .getBoolean("app_enable_grid",false)) {
-                cardView.setLayoutParams(new RelativeLayout.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, 200));
-            }
             cardView.setOnLongClickListener(this);
             cardView.setOnClickListener(new CardView.OnClickListener() {
                 public void onClick(View v) {
