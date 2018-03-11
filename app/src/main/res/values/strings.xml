@@ -24,8 +24,8 @@
     <string name="enable_dbdups_summary_true">Allowing duplicates</string>
     <string name="enable_dbdups_summary_false">Not allowing duplicates</string>
 
-    <string name="build_version">App Version</string>
-    <string name="build_version_string">2.0.8</string>
+    <string name="build_updater">Updater</string>
+    <string name="build_updater_summary">Click here to check for updates</string>
 
     <string name="app_creator">Creator</string>
     <string name="app_creator_name">Adam Myczkowski (mycax)</string>
@@ -37,7 +37,7 @@
     <string name="delete_results_summary">Delete all contents from results database</string>
 
     <string name="app_libs">About project</string>
-    <string name="app_libs_summary">Open source libraries used</string>
+    <string name="app_libs_summary">Open source libraries and app version</string>
 
     <!-- Descriptions -->
     <string name="process_desc">Run Lucky Numbers process</string>

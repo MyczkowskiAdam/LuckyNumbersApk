@@ -11,6 +11,9 @@ import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
 import android.support.design.widget.Snackbar;
 
+import com.github.javiersantos.appupdater.AppUpdater;
+import com.github.javiersantos.appupdater.enums.Display;
+import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.LibsBuilder;
 
@@ -87,7 +90,14 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
     @Override
     public boolean onPreferenceClick(Preference preference) {
         if (preference == findPreference(BUILD_APP_VERSION)) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/MyczkowskiAdam/LuckyNumbersApk/releases")));
+            new AppUpdater(getActivity())
+                    .setUpdateFrom(UpdateFrom.GITHUB)
+                    .setGitHubUserAndRepo("MyczkowskiAdam", "LuckyNumbersApk")
+                    //.setUpdateFrom(UpdateFrom.JSON)
+                    //.setUpdateJSON("https://raw.githubusercontent.com/MyczkowskiAdam/LuckyNumbersApk/master/app/update.json")
+                    .setDisplay(Display.DIALOG)
+                    .showAppUpdated(true)
+                    .start();
         } else if (preference == findPreference(APP_GITHUB_LINK)) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/MyczkowskiAdam/LuckyNumbersApk")));
         } else if (preference == findPreference(APP_DELETE_RESULTS)) {

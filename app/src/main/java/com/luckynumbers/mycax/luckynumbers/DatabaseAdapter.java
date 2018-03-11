@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -103,15 +103,16 @@ public class DatabaseAdapter extends RecyclerView.Adapter<DatabaseAdapter.Myhold
         }
     }
 
+    @NonNull
     @Override
-    public Myholder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public Myholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row, null);
         return new Myholder(view);
 
     }
 
     @Override
-    public void onBindViewHolder(Myholder holder, int position) {
+    public void onBindViewHolder(@NonNull Myholder holder, int position) {
         DataModelDB dataModelDB = dataModelDBArrayList.get(position);
         holder.name.setText(dataModelDB.getName());
         holder.result.setText(dataModelDB.getResult());

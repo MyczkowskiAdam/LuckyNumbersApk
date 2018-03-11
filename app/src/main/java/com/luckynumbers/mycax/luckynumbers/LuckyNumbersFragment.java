@@ -80,7 +80,7 @@ public class LuckyNumbersFragment extends Fragment implements
         }
     }
 
-    public String getNumberMeaning(int LuckyNumber) {
+    private String getNumberMeaning(int LuckyNumber) {
         Resources res = getResources();
         String[] meanings = res.getStringArray(R.array.number_meaning);
         return meanings[LuckyNumber-1];

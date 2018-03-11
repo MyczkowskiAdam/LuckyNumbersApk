@@ -15,10 +15,6 @@
         android:key="app_allow_dbdups"
         android:title="@string/enable_dbdups" />
 
-    <Preference android:key="build_app_version"
-        android:title="@string/build_version"
-        android:summary="@string/build_version_string" />
-
     <Preference android:key="app_delete_results"
         android:title="@string/delete_results"
         android:summary="@string/delete_results_summary"/>
@@ -34,5 +30,9 @@
     <Preference android:key="app_opensource_libs"
         android:title="@string/app_libs"
         android:summary="@string/app_libs_summary"/>
+
+    <Preference android:key="build_app_version"
+        android:title="@string/build_updater"
+        android:summary="@string/build_updater_summary" />
 
 </PreferenceScreen>
