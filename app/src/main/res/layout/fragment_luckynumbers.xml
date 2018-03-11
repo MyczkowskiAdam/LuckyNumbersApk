@@ -1,100 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.luckynumbers.mycax.luckynumbers.LuckyNumbersFragment"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="81dp">
+    tools:context="com.luckynumbers.mycax.luckynumbers.LuckyNumbersFragment">
 
-    <com.hanks.htextview.fade.FadeTextView
-        android:id="@+id/output_text"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingTop="8dp"
-        android:textColor="?attr/output_color"
-        android:textSize="18sp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginTop="200dp"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/lastName"/>
+        android:paddingBottom="70dp">
 
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/firstName"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:hint="@string/enter_fname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Greetings"
-        app:met_floatingLabel="highlight"
-        app:met_floatingLabelTextSize="20sp"
-        app:met_baseColor="?attr/txt_basecolor"
-        app:met_textColor="?attr/txt_color"
-        app:met_primaryColor="?attr/floatingLabelTextColor"
-        app:met_floatingLabelTextColor="?attr/floatingLabelTextColor"/>
+        <com.hanks.htextview.fade.FadeTextView
+            android:id="@+id/output_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="200dp"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:textColor="?attr/output_color"
+            android:textSize="18sp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/lastName" />
 
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/lastName"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:hint="@string/enter_lname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstName"
-        app:met_floatingLabel="highlight"
-        app:met_floatingLabelTextSize="20sp"
-        app:met_baseColor="?attr/txt_basecolor"
-        app:met_textColor="?attr/txt_color"
-        app:met_primaryColor="?attr/floatingLabelTextColor"
-        app:met_floatingLabelTextColor="?attr/floatingLabelTextColor"/>
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/firstName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:hint="@string/enter_fname"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Greetings"
+            app:met_baseColor="?attr/txt_basecolor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="?attr/floatingLabelTextColor"
+            app:met_floatingLabelTextSize="20sp"
+            app:met_primaryColor="?attr/floatingLabelTextColor"
+            app:met_textColor="?attr/txt_color" />
 
-    <TextView
-        android:id="@+id/Greetings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="@string/app_greetings"
-        android:textSize="20sp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/lastName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:hint="@string/enter_lname"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/firstName"
+            app:met_baseColor="?attr/txt_basecolor"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelTextColor="?attr/floatingLabelTextColor"
+            app:met_floatingLabelTextSize="20sp"
+            app:met_primaryColor="?attr/floatingLabelTextColor"
+            app:met_textColor="?attr/txt_color" />
 
-    <ImageButton
-        android:id="@+id/imageButtonReset"
-        android:contentDescription="@string/process_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="120dp"
-        android:background="@null"
-        app:layout_constraintEnd_toEndOf="@+id/lastName"
-        app:layout_constraintTop_toTopOf="@+id/lastName"
-        app:srcCompat="?attr/ic_refresh" />
+        <TextView
+            android:id="@+id/Greetings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/app_greetings"
+            android:textSize="20sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imageButtonCalculate"
-        android:contentDescription="@string/reset_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="120dp"
-        android:background="@null"
-        app:layout_constraintStart_toStartOf="@+id/lastName"
-        app:layout_constraintTop_toTopOf="@+id/lastName"
-        app:srcCompat="?attr/ic_done" />
+        <ImageButton
+            android:id="@+id/imageButtonReset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:background="@null"
+            android:contentDescription="@string/process_desc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageButtonCalculate"
+            app:layout_constraintTop_toTopOf="@+id/lastName"
+            app:srcCompat="?attr/ic_refresh" />
 
-</android.support.constraint.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/imageButtonCalculate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:background="@null"
+            android:contentDescription="@string/reset_desc"
+            app:layout_constraintEnd_toStartOf="@+id/imageButtonReset"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/lastName"
+            app:srcCompat="?attr/ic_done" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

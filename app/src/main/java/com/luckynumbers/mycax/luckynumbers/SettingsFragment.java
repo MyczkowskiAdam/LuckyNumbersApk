@@ -52,7 +52,8 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
 
         sGridView = (SwitchPreference) findPreference(APP_ENABLE_GRID);
         if (((MainActivity) getActivity()).getMainTag().equals("phone")) {
-            getPreferenceScreen().removePreference(sGridView);
+            sGridView.setShouldDisableView(true);
+            sGridView.setEnabled(false);
         } else {
             sGridView.setSummary(PreferenceManager.getDefaultSharedPreferences(getActivity())
                     .getBoolean(APP_ENABLE_GRID, false) ? R.string.gridview_summary_true : R.string.gridview_summary_false);
